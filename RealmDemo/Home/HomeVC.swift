@@ -37,6 +37,7 @@ class HomeVC: UIViewController {
     }
 
     @IBAction func btnLogoutAction(_ sender: Any) {
+        view.endEditing(true)
         UserSession.shared.logOut()
         let controller = LoginVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(controller, animated: true)

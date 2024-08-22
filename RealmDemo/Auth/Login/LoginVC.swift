@@ -19,6 +19,8 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
         setupUi()
     }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
@@ -28,8 +30,9 @@ class LoginVC: UIViewController {
         btnLogin.layer.cornerRadius = 15
 
     }
-    
+
     @IBAction func btnLoginAction(_ sender: Any) {
+        view.endEditing(true)
         guard let email = txtFld_Email.text, !email.isEmpty else {
             Utils.showAlert(message: "Please enter your email.", in: self)
             return
@@ -42,7 +45,7 @@ class LoginVC: UIViewController {
         
         let result = loginVM.login(email: email, password: password)
         switch result {
-        case .success(let user):
+        case .success(_):
             Utils.showAlert(
                 title: "Success",
                 message: "Login successful!",
@@ -62,6 +65,7 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func btnSignUpAction(_ sender: Any) {
+        view.endEditing(true)
         let controller = SignUpVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(controller, animated: true)
 

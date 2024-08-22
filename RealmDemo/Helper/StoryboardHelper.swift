@@ -34,7 +34,6 @@ enum AppStoryboard : String {
 
 extension UIViewController {
     
-    // Not using static as it wont be possible to override to provide custom storyboardID then
     class var storyboardID : String {
         
         return "\(self)"

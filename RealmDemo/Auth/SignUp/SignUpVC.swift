@@ -24,11 +24,14 @@ class SignUpVC: UIViewController {
     }
     
     func setupUi() {
+        
         btnSignUp.layer.cornerRadius = 15
     }
     
     
     @IBAction func btnSignUpAction(_ sender: Any) {
+        view.endEditing(true)
+
         guard let name = txtFld_Name.text, !name.isEmpty else {
             Utils.showAlert(message: "Please enter your name.", in: self)
             return
@@ -61,6 +64,7 @@ class SignUpVC: UIViewController {
     }
     
     @IBAction func btnLoginAction(_ sender: Any) {
+        view.endEditing(true)
         self.navigationController?.popViewController(animated: true)
     }
 }
